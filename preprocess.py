@@ -6,6 +6,10 @@ from sklearn.utils import Bunch
 from skimage.io import imread
 from skimage.transform import resize
 from PIL import Image, ImageOps
+from keras.utils import to_categorical
+from sklearn.model_selection import GridSearchCV, train_test_split
+from numpy import array
+import cv2 as cv
 
 class Preprocess:
         def __init__(self):
@@ -36,6 +40,10 @@ class Preprocess:
                 for i, direc in enumerate(folders):
                         for file in direc.iterdir():
                                 img = imread(file, plugin='matplotlib')
+                                gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+                                harris = cv.cornerHarris(gray, 2,3,0.04)
+
+
                                 img_resized = resize(img, dimension, anti_aliasing = True, mode = 'reflect')
                                 flat_data.append(img_resized.flatten())
                                 images.append(img_resized)
@@ -50,3 +58,12 @@ class Preprocess:
                                 target_names = categories,
                                 images = self.images,
                                 DESCR = descr)
+        
+        def splitData(self, image_dataset):
+                x = image_dataset.images
+                y = image_dataset.target
+                y = array(y)
+                y = to_categorical(y)
+                x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_state=2)
+                
+                return x_train, x_test, y_train, y_test
