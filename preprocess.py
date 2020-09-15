@@ -62,8 +62,8 @@ class Preprocess:
         def splitData(self, image_dataset):
                 x = image_dataset.images
                 y = image_dataset.target
-                y = array(y)
-                y = to_categorical(y)
+                #y = array(y)
+                #y = to_categorical(y)
                 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.1, random_state=2)
-                
+
                 return x_train, x_test, y_train, y_test
