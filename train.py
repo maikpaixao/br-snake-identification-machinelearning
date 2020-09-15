@@ -15,9 +15,10 @@ def main():
 
         clf = LinearSVC()
         clf.fit(x_train, y_train)
-        predict = clf.predict(x_test)
+        y_pred = clf.predict(x_test)
+        accuracy = accuracy_score(y_test, y_pred)
 
-
+        print('Accuracy: ', accuracy)
 
 if __name__ == "__main__":
         main()

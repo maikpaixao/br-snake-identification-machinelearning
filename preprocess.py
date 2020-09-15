@@ -60,7 +60,8 @@ class Preprocess:
                                 DESCR = descr)
         
         def splitData(self, image_dataset):
-                x = image_dataset.images
+                #x = image_dataset.images
+                x = image_dataset.data
                 y = image_dataset.target
                 #y = array(y)
                 #y = to_categorical(y)
