@@ -10,6 +10,7 @@ from keras.utils import to_categorical
 from sklearn.model_selection import GridSearchCV, train_test_split
 from numpy import array
 import cv2 as cv
+import cv2
 
 class Preprocess:
         def __init__(self):
@@ -40,9 +41,14 @@ class Preprocess:
                 for i, direc in enumerate(folders):
                         for file in direc.iterdir():
                                 img = imread(file, plugin='matplotlib')
-                                gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-                                harris = cv.cornerHarris(gray, 2,3,0.04)
+                                #surf = cv.xfeatures2d.SURF_create()
+                                #sift = cv2.xfeatures2d.SIFT_create()
+                                orb = cv.ORB_create(nfeatures=1500)
 
+                                #img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+                                #harris = cv.cornerHarris(gray, 2,3,0.04)
+                                kp, des = orb.detectAndCompute(img, None)
+                                img = cv.drawKeypoints(img, kp, None)
 
                                 img_resized = resize(img, dimension, anti_aliasing = True, mode = 'reflect')
                                 flat_data.append(img_resized.flatten())
