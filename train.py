@@ -11,7 +11,9 @@ def main():
         image_dataset = preprocess.loadfile(container_path = path)
         x_train, x_test, y_train, y_test = preprocess.splitData(image_dataset)
 
-        clf = LinearSVC(C=0.1, max_iter=1500)
+        #print(type(x_train), len(x_train[1]))
+
+        clf = LinearSVC(C=0.1)
         clf.fit(x_train, y_train)
 
         y_pred = clf.predict(x_test)
