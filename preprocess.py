@@ -42,20 +42,20 @@ class Preprocess:
                         for file in direc.iterdir():
                                 img = imread(file, plugin='matplotlib')
                                 surf = cv.xfeatures2d.SURF_create()
-                                sift = cv.xfeatures2d.SIFT_create()
+                                #sift = cv.xfeatures2d.SIFT_create()
                                 #orb = cv.ORB_create(nfeatures=1500)
 
                                 #img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
                                 #harris = cv.cornerHarris(gray, 2,3,0.04)
-                                kp_sift, des_sift = sift.detectAndCompute(img, None)
-                                img_sift = cv.drawKeypoints(img, kp_sift, None)
-                                img_resized_sift = resize(img_sift, dimension, anti_aliasing = True, mode = 'reflect')
+                                #kp_sift, des_sift = sift.detectAndCompute(img, None)
+                                #img_sift = cv.drawKeypoints(img, kp_sift, None)
+                                #img_resized = resize(img_sift, dimension, anti_aliasing = True, mode = 'reflect')
 
                                 kp_surf, des_surf = surf.detectAndCompute(img, None)
                                 img_surf = cv.drawKeypoints(img, kp_surf, None)
-                                img_resized_surf = resize(img_surf, dimension, anti_aliasing = True, mode = 'reflect')
+                                img_resized = resize(img_surf, dimension, anti_aliasing = True, mode = 'reflect')
 
-                                img_resized = np.concatenate((img_resized_sift.flatten(), img_resized_surf.flatten()), axis = None)
+                                #img_resized = np.concatenate((img_resized_sift.flatten(), img_resized_surf.flatten()), axis = None)
 
                                 flat_data.append(img_resized)
                                 images.append(img_resized)
