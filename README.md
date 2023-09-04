@@ -1,4 +1,6 @@
-## Brazilian Snake Identification - Deep Learning
+## Brazilian Snake Identification - Machine Learning
+
+> Snakes are misunderstood and often considered evil, mainly due to ignorance about their true nature and position in the natural world. But a small percentage of snakes are venomous. Thus, we observe a lack of effort by researchers in the field to identify snake species using Supervised Learning methods. This is largely due to lack of resources and data to be able to train deep learning based models. In this work we present SnakeBR, a new dataset created to classify Brazilian snake species using Machine Learning models. Our dataset has, until the moment of this publication, 15 species of Brazilian snakes with a total of 450 images.
 
 #### Reference Papers:
 
