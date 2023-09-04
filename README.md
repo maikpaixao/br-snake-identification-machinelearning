@@ -7,9 +7,9 @@
 benchmark\dataset.sh
 ```
 
-### Train the Model 
+### Train the Model Running
 ```bash
-benchmark\dataset.sh
+py train.py
 ```
 
 #### Reference Papers:
