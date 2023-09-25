@@ -7,7 +7,7 @@
 benchmark\dataset.sh
 ```
 
-### Train the Model Running
+### Train the Model
 ```bash
 py train.py
 ```
